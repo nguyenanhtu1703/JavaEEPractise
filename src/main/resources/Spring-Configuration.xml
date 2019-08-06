@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="bean1" class="com.nguyenanhtu.order.Order">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="Hamburger"></constructor-arg>
+		<constructor-arg ref="beanAd1"></constructor-arg>
+	</bean>
+	
+	<bean id="bean2" class="com.nguyenanhtu.order.Order">
+		<constructor-arg value="2"></constructor-arg>
+		<constructor-arg value="Beef"></constructor-arg>
+		<constructor-arg ref="beanAd1"></constructor-arg>
+	</bean>
+
+	<bean id="bean3" class="com.nguyenanhtu.order.Order">
+		<constructor-arg value="3"></constructor-arg>
+		<constructor-arg value="Juices"></constructor-arg>
+		<constructor-arg ref="beanAd1"></constructor-arg>
+	</bean>
+	
+	<bean id="beanAd1" class="com.nguyenanhtu.Address">
+		<constructor-arg value="Krakow" type="String"></constructor-arg>
+	</bean>
+	
+	<bean id="beanCust1" class="com.nguyenanhtu.Customer">
+		
+		<property name="address" ref="beanAd1"></property>
+		
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="nguyen anh tu"></constructor-arg>
+		
+		<constructor-arg>
+			<list>
+				<ref bean="bean1"></ref>
+				<ref bean="bean2"></ref>
+				<ref bean="bean3"></ref>
+			</list>
+		</constructor-arg>
+		<constructor-arg>
+			<list>
+				<value>good</value>
+				<value>yes</value>
+				<value>fine</value>
+			</list>
+		</constructor-arg>
+		
+	</bean>
+	
+</beans>
